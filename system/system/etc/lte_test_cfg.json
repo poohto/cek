@@ -1,0 +1,159 @@
+{
+    "common": {
+        "service_type": "gnd",
+        "dev_type": "rc",
+        "product_type": "RC331",
+        "runtime": "android",
+
+        "b_test_env": false,
+        "b_privatization_support": false,
+        "support_instances_number": 2,
+        "host_set": {
+            "service_module_id": "0x0e06",
+            "local_wlm_host_id": "0x1e01",
+            "peer_wlm_host_id": "0x1e01",
+            "peer_motor_host_id": "0x1e01",
+            "peer_app_host_id": "0x1e01",
+            "blackbox_host_id": "0x1d03",
+            "local_hdvt_host_id": "0x1e01",
+            "peer_lte_host_id": "0x0806",
+            "local_lte_test_host_id": "0x1e01",
+            "local_router_host_id": "0x1e01"
+        },
+        "enable_modules": {
+            "event_client": 1,
+            "hms_client": 1,
+            "cmd_xfer": 1,
+            "ctrl_xfer": 1,
+            "download_xfer": 1,
+            "video_xfer": 1,
+            "link_rpt": 1,
+            "modem_adapter": 1,
+            "misc_set": 1,
+            "lte_pair" :1
+        },
+        "enable_liblte_channel_list": [
+            "LTE_CHANNEL_TYPE_VEDIO0",
+            "LTE_CHANNEL_TYPE_CTRL0",
+            "LTE_CHANNEL_TYPE_CTRL1",
+            "LTE_CHANNEL_TYPE_DOWNLOAD0"
+        ],
+        "lte_black_list": [
+            "US",
+            "CA"
+        ],
+        "single_frequency_cn_list": [
+            "JP",
+            "RU",
+            "IL",
+            "UA",
+            "KZ"
+        ],
+        "debug_skip_mode": {
+            "skip_ssfn": 1,
+            "fake_ca": 0,
+            "skip_dongle_check": 1,
+            "skip_dongle_expire": 1
+        }
+    },
+    "modem_adapter": {
+        "mode": "single"
+    },
+    "mdm_mgr": {
+        "debug": 1,
+        "platform": "android",
+        "msupport": [
+            "dji",
+            "ril"
+        ]
+    },
+    "dev_manage": {
+        "enable_dongle": ["dji_mini"],
+        "dongle_usb_workaround": {
+            "cmd_poweroff": "echo 0 > /sys/class/gpio/gpio44/value",
+            "cmd_poweron": "echo 1 > /sys/class/gpio/gpio44/value"
+        },
+        "dongle_upgrade": {
+            "version": 0,
+            "dongle_upgrade_method": "full",
+            "dongle_fw_dir": "/data"
+        }
+    },
+    "video_xfer": {
+        "video_channel_number": 1,
+        "header_version": "6d",
+        "enc_bw_discount": 80,
+        "b_add_usb_header": false,
+        "bool_find_headr": false
+    },
+    "download_xfer": {
+        "download_transfer_protocol": "logic",
+        "b_background_download": false,
+        "download_bw_ratio": 15
+    },
+    "ctrl_xfer": {
+        "control_bool_use_libwlm": false
+    },
+    "link_rpt": {
+        "version": "v1",
+        "codec_type_number": 1,
+        "up_bw_limit": 4000,
+        "down_bw_limit": 512,
+        "choiced_liblte_index": 3,
+        "choiced_liblte_alg": 1
+    },
+    "hms_client": {
+        "enable_hms_list": [
+            "LTE_HMS_ERR_GND_CERTIFICATE_INVALID",
+            "LTE_HMS_ERR_RC_FIRMWARE_UPGRADE",
+            "LTE_HMS_ERR_RC_NETWORK_UNREACHABLE",
+            "LTE_HMS_ERR_RC_WIFI_NETWORK_UNREACHABLE",
+            "LTE_HMS_ERR_SINGLE_COUNTRY_NETWORK_UNREACHABLE",
+            "LTE_HMS_ERR_RC_WEAK_SIGNAL",
+            "LTE_HMS_ERR_UAV_WEAK_SIGNAL",
+            "LTE_HMS_ERR_NETWORK_DELAY_HIGH",
+            "LTE_HMS_ERR_SERVICE_EXPIRE",
+            "LTE_HMS_ERR_RC_PS_DETACHED",
+            "LTE_HMS_ERR_SINGLE_COUNTRY_PS_DETACHED",
+            "LTE_HMS_ERR_RC_NETWORK_NOT_REGISTERED",
+            "LTE_HMS_ERR_SINGLE_COUNTRY_NOT_REGISTERED",
+            "LTE_HMS_ERR_RC_NETWORK_REGISTER_DETACHED"
+        ]
+    },
+    "lte_pair": {
+        "pair_mode": "by_sdr",
+        "b_support_oob": false
+    },
+    "misc_set": {
+        "debug_print": 1,
+        "cycle_enable": 1,
+        "cycle_set": {
+            "devlist":          {"enable": 1, "cycle_ms": 500},
+            "activelist":       {"enable": 1, "cycle_ms": 500},
+            "ipv6_info":        {"enable": 1, "cycle_ms": 500},
+            "service_info":     {"enable": 1, "cycle_ms": 500},
+            "dongle_state":     {"enable": 1, "cycle_ms": 500},
+            "link_state":       {"enable": 1, "cycle_ms": 500},
+            "cache_info":       {"enable": 1, "cycle_ms": 500},
+            "dongle_info":      {"enable": 1, "cycle_ms": 500},
+            "data_capture":     {"enable": 1, "cycle_ms": 20000},
+            "block_fly":        {"enable": 1, "cycle_ms": 500},
+            "country_code":     {"enable": 1, "cycle_ms": 500},
+            "privatization":    {"enable": 0, "cycle_ms": 500},
+            "sub_state":        {"enable": 1, "cycle_ms": 500},
+            "liblte_modem_info":{"enable": 1, "cycle_ms": 500},
+            "share_info":       {"enable": 1, "cycle_ms": 500},
+            "state2other":      {"enable": 0, "cycle_ms": 500},
+            "traffic_ctrl":     {"enable": 0, "cycle_ms": 500},
+            "debug_info":       {"enable": 1, "cycle_ms": 500},
+            "location":         {"enable": 0, "cycle_ms": 1000},
+            "ssfn":             {"enable": 1, "cycle_ms": 500},
+            "local_link_state": {"enable": 1, "cycle_ms": 500},
+            "lte_test":         {"enable": 0, "cycle_ms": 500}
+        },
+        "blocked_enable": 1,
+        "blocked_set": {
+            "thread_num": 2
+        }
+    }
+}

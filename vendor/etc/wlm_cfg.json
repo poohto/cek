@@ -1,0 +1,559 @@
+{
+    "common": {
+        "version":                4,
+        "print_level":            [1, 1, 0, 0, 0],
+        "product":                "RC331",
+        "soc":                    "6490",
+        "libwlm_module_id":       "0x0e07",
+        "role":                   "master",
+
+        "sdr_enable":             1,
+        "sdr_agent_host_id":      "0x0e00",
+        "lte_enable":             1,
+        "lte_agent_host_id":      "0x0e06",
+        "wifi_enable":            0,
+        "wifi_interact_host_id":  "0x0000",
+        "wifi_agent_host_id":     "0x0000",
+        "local_router_host_id":   "0x0205",
+        "peer_wlm_host_id":       "0x0907",
+        "local_wlm_host_id":      "0x0e07",
+
+        "enable_modules": {
+            "event_cb":         1,
+            "ds_master":        0,
+            "ds_slave":         0,
+            "dev_mgr":          1,
+            "agt_mgr":          1,
+            "link_sw":          1,
+            "msg_filter":       0,
+            "msg_dspt":         1,
+            "cmd_fusion":       1,
+            "link_state":       1,
+            "event_track":      1,
+            "data_fwd":         0,
+            "adaptive_mode":    0
+        },
+        "tools": {
+            "path":             "/data/dji_wlm.log",
+            "pidstat":          0,
+            "top":              0,
+            "date":             0
+        },
+        "features": {
+            "lm_follow":        1
+        }
+    },
+    "event_cb": {
+        "debug_print":          0,
+        "cfg_done":             1
+    },
+    "dev_mgr":{
+        "dev_type":                 "RC",
+        "dev_role":                 "master_RC",
+        "debug_print":              0,
+        "cfg_done":                 1,
+        "dev_node": {
+            "debug_print":          0,
+            "cfg_done":             1,
+            "dev_type": {
+                "debug_print":      1,
+                "cfg_done":         1
+            },
+            "dev_link": {
+                "debug_print":      0,
+                "cfg_done":         1,
+                "cmd_chnnl_nr":     1,
+                "lv_chnnl_nr":      1,
+                "dl_chnnl_nr":      1
+            },
+            "msg_consumer": {
+                "debug_print":      0,
+                "cfg_done":         1,
+                "msg_stat":         0
+            }
+        },
+        "dev_list": {
+            "debug_print":          0,
+            "cfg_done":             1
+        },
+        "beacon": {
+            "debug_print":          0,
+            "cfg_done":             1,
+            "xmit_intvl_ms":        500,
+            "xmit_freq_divid_ratio":4,
+            "check_intvl_count":    3
+        },
+        "shm_mgr": {
+            "debug_print":          0,
+            "cfg_done":             1,
+            "sync_freq":            10,
+            "bandwidth": {
+                "lte_max_bw_bps" : 3600000,
+                "min_bw_bps": {
+                    "common_command": 50000,
+                    "rt_command":     50000,
+                    "liveview":       512000,
+                    "common_data":    512000
+                }
+            }
+        }
+    },
+    "agt_mgr": {
+        "cfg_done":                 1,
+        "debug_print":              0,
+        "stat_print":               0,
+        "enable_test":              0,
+        "bw_fb_enable":             0,
+        "subscribe_lv":             0,
+        "lv_host_id":               "0x0800",
+        "protect_fly_dev":          0,
+        "sdr_threshold_kbps":       4000,
+        "lte_threshold_kbps":       600,
+        "protect_stream":           0,
+        "enable_protect_stream":    1,
+        "stream_threshold_kbps":    256,
+        "lte_max_bw":               4000,
+        "def_expt_rate":            [1, 1, 0],
+        "sdr_rpt_tunnel_map":       [0, 1, 2],
+        "lte_rpt_tunnel_map":       [0, 1, 2],
+        "i_frame_tunnel_map":       [0, 1, 2],
+        "lv_def_tunnel_map":        [0, 1, 2],
+        "bw_process": {
+            "SDR": {
+                "drop_intvl_ms":    2000,
+                "filter_item_cnt":  10,
+                "good_thd_kbps":       [10000, 12000, 14000],
+                "good_thd_cnt":        [30,    20,    10],
+                "middle_upthd_kbps":   [10000, 8000,  6000],
+                "middle_downthd_kbps": [2000,  3000,  4000],
+                "middle_thd_cnt":      [15,    10,    5],
+                "bad_thd_kbps":        [2000,  1500,  1000],
+                "bad_thd_cnt":         [15,    10,    5]
+            },
+            "LTE": {
+                "drop_intvl_ms":    1000,
+                "filter_item_cnt":  20,
+                "good_thd_kbps":       [700, 2048],
+                "good_thd_cnt":        [25,   10],
+                "bad_thd_kbps":        [700, 550],
+                "bad_thd_cnt":         [25,   10]
+            }
+        },
+        "agt_rpt": {
+            "SDR": {
+                "rpt_ver":  "v3",
+                "enable":   0,
+                "chnnl":    "none"
+            },
+            "LTE": {
+                "rpt_ver":  "v1",
+                "enable":   0,
+                "chnnl":    "none"
+            },
+            "WIFI": {
+                "rpt_ver":  "v1",
+                "enable":   0,
+                "chnnl":    "none"
+            }
+        }
+    },
+    "msg_filter": {
+        "debug_print" :         0,
+        "cfg_done":             1,
+        "filter_level" : {
+            "level0": {
+                "bw_kbps": 512,
+                "inc_timeslice_ms": 0,
+                "inc_interval_count": 0
+            },
+            "level1": {
+                "bw_kbps": 256,
+                "inc_timeslice_ms": 0,
+                "inc_interval_count": 2
+            },
+            "level2": {
+                "bw_kbps": 128,
+                "inc_timeslice_ms": 0,
+                "inc_interval_count": 4
+            }
+        },
+        "cmd_set": {},
+        "cmd_set_id": {}
+    },
+    "event_track": {
+        "cfg_done":               1,
+        "debug_print":            0,
+        "target_host_id":         "0x0200",
+        "rpt_cycl_id":            "fw_0e07_wlm_gnd_rpt_cycl",
+        "rpt_once_id":            "fw_0e07_wlm_gnd_rpt_once",
+        "rpt_cyc_time_ms":        30000
+    },
+    "lk_state": {
+        "cfg_done":               1,
+        "debug_print":            0,
+        "osd_receiver_host_id":   "0x0200",
+        "osd_sync_freq":          5
+    },
+    "ds_master": {
+        "cfg_done":    1,
+        "self_id":     0,
+        "debug_print": 0,
+        "neighbor": {
+        }
+    },
+    "data_fwd": {
+    },
+    "link_sw": {
+        "cfg_done":    1,
+        "debug_print": 0,
+        "link_ctrl": {
+            "cfg_done":    1,
+            "debug_print": 0
+        },
+        "route_ctrl": {
+            "cfg_done":    1,
+            "debug_print": 0,
+            "rc_hosts": ["0x0200", "0x0205", "0x0207", "0x0600", "0x0d00", "0x0d01", "0x0e00", "0x0e07","0x0e06"],
+            "glass_hosts": ["0x1c00", "0x1c01", "0x1c07", "0x1d00"],
+            "route_switch": {
+                "1": {"scene": "SDR_ONLY",
+                      "steps": ["0x0e00", "0x0205", "0x0e06"]},
+                "2": {"scene": "LTE_ONLY",
+                      "steps": ["0x0e06", "0x0205", "0x0e00"]},
+                "3": {"scene": "HYBRID_LTE_SDR",
+                      "steps": ["0x0205", "0x0e06", "0x0e00"]}
+            }
+        }
+    },
+    "msg_dispatch": {
+        "cfg_done":                  1,
+        "debug_print":               0,
+        "msg_stat":                  0,
+        "fmsg_attr_ver":             2,
+        "multipack_ver":             "logic",
+        "multipack_sdr_enable":      0,
+        "multipack_lte_enable":      0,
+        "multipack_wifi_enable":     0,
+        "multipack_max_count":       30,
+        "multipack_max_timeout_ms":  100,
+        "white_list": [],
+
+        "enable_dls":                0,
+        "dls_name":                  "send",
+        "aggregate_sdr_enable":      0,
+        "aggregate_lte_enable":      0,
+        "aggregate_wifi_enable":     0,
+        "aggregate_max_timeout_ms":  50
+    },
+    "cmd_fusion": {
+        "cfg_done":                 1,
+        "debug_print":              0,
+
+        "enable_dls":               0,
+        "dls_name":                 "recv"
+    },
+    "adaptive_mode": {
+        "cfg_done":                 1,
+        "debug_print":              0
+    },
+    "share_info": {
+        "enable":         1,
+        "sync_on":        0,
+        "channel":        "shm",
+        "shm_file":       "/dev/wlm_shm",
+        "shm_size_bytes": 1024,
+        "shm_key":        123,
+        "shm_sync":       "socket",
+        "socket_path":    "/dev/wlm_shm_sync"
+    },
+    "wl_manager_library": {
+        "common": {
+            "debug": false,
+            "hybrid_type_lte_sdr": true,
+            "hybrid_type_sdr_wifi": false,
+            "hybrid_type_lte_wifi": false
+        },
+        "modules": {
+                "0x0205": {
+                    "module_name": "dji_link",
+                    "channels":[
+                        {"type":"bulk_single","dev":"usb-bulk-host", "reconnect":false,"host": true, "vid":"2CA3", "pid":"1020", "interface": 3, "ep_in": "84", "ep_out":"04"},
+                        {"type": "udp", "server": true, "local_port": 4000},
+                        {"type": "uds", "server": true, "un_path": "/dev/lte_liveview"},
+                        {"type":"bulk_single","dev":"usb-bulk-host-1", "reconnect":false,"host": true, "vid":"2CA3", "pid":"1020", "interface": 0, "ep_in": "81", "ep_out":"01"},
+                        {"type": "uds", "server": true, "un_path": "/dev/lte_liveview_v2"}
+                    ],
+                    "datas": {
+                        "data0": {
+                            "header_type": "6D",
+                            "fusion_version": "v2",
+                            "from_usb_multi": false,
+                            "b_lv2_rm_header": false,
+                            "wl_data_type": "liveview1",
+                            "link_number": 2,
+                            "recv_mode": "controlled",
+                            "send_mode": "controlled",
+                            "link_sdr": {
+                                    "enable": true,
+                                    "input": 0
+                                    },
+                            "link_lte": {
+                                    "enable": true,
+                                    "input": 2
+                                    },
+                            "params":{
+                                "mode_lte_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_sdr_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_wifi_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_lift_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                }
+                            }
+                        },
+                        "data1": {
+                            "header_type": "6D",
+                            "fusion_version": "v2",
+                            "from_usb_multi": false,
+                            "b_lv2_rm_header": false,
+                            "wl_data_type": "liveview2",
+                            "link_number": 2,
+                            "recv_mode": "controlled",
+                            "send_mode": "controlled",
+                            "link_sdr": {
+                                    "enable": true,
+                                    "input": 3
+                                    },
+                            "link_lte": {
+                                    "enable": true,
+                                    "input": 4
+                                    },
+                            "params":{
+                                "mode_lte_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_sdr_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_wifi_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_lift_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                }
+                            }
+                        }
+                    }
+                },
+                "0x0e06": {
+                    "module_name": "dji_lte",
+                    "channels":[
+                        {"type": "udp", "server": false, "target_ip": "127.0.0.1", "target_port": 4000},
+                        {"type": "uds", "server": false, "un_path": "/dev/lte_liveview"},
+                        {"type":"bulk_single","dev":"usb-bulk-ctrl", "reconnect":false,"host": true, "vid":"2CA3", "pid":"1020", "interface": 5, "ep_in": "86", "ep_out":"06"},
+                        {"type": "uds", "server": false, "un_path": "/dev/dji_lte_v1", "peer_path": "/dev/wl_lte_v1"},
+                        {"type": "uds", "server": false, "un_path": "/dev/wl_lte_v1", "peer_path": "/dev/dji_lte_v1"},
+                        {"type": "uart", "dev": "/dev/ttyS2", "baudrate": 115200, "parity": "none", "stopbit": "1", "wordlen": "8", "flowctl":false},
+                        {"type": "uds", "server": false, "un_path": "/dev/lte_liveview_v2"}
+                    ],
+                    "datas": {
+                        "data0": {
+                            "wl_data_type": "liveview1",
+                            "link_number": 1,
+                            "recv_mode": "link_lte",
+                            "send_mode": "link_lte",
+                            "link_lte": {
+                                    "enable": true,
+                                    "output": 1
+                                    },
+                            "params":{
+                                "mode_lte_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_sdr_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_wifi_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_lift_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                }
+                            }
+                        },
+                        "data1": {
+                            "wl_data_type": "liveview2",
+                            "link_number": 1,
+                            "recv_mode": "link_lte",
+                            "send_mode": "link_lte",
+                            "link_lte": {
+                                    "enable": true,
+                                    "output": 6
+                                    },
+                            "params":{
+                                "mode_lte_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_sdr_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_wifi_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_lift_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                }
+                            }
+                        },
+                        "data2": {
+                            "wl_data_type": "selfdefine1",
+                            "link_number": 1,
+                            "recv_mode": "link_selfdefine",
+                            "send_mode": "link_selfdefine",
+                            "rm_libwlm_header": false,
+                            "check_libwlm_header": false,
+                            "link_selfdefine": {
+                                    "enable": true,
+                                    "input": 2
+                                    },
+                            "params":{
+                                "mode_lte_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_sdr_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_wifi_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_lift_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                }
+                            }
+                        },
+                        "data3": {
+                            "wl_data_type": "selfdefine3",
+                            "link_number": 1,
+                            "recv_mode": "link_selfdefine",
+                            "send_mode": "link_selfdefine",
+                            "add_libwlm_header":false,
+                            "rm_libwlm_header": false,
+                            "check_libwlm_header": false,
+                            "link_selfdefine": {
+                                    "enable": true,
+                                    "input": 3,
+                                    "output": 3
+                                    },
+                            "params":{
+                                "mode_lte_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_sdr_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_wifi_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_lift_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                }
+                            }
+                        },
+                        "data4": {
+                            "wl_data_type": "selfdefine4",
+                            "link_number": 1,
+                            "recv_mode": "link_selfdefine",
+                            "send_mode": "link_selfdefine",
+                            "add_libwlm_header":false,
+                            "rm_libwlm_header": false,
+                            "check_libwlm_header": false,
+                            "link_selfdefine": {
+                                    "enable": true,
+                                    "input": 4,
+                                    "output": 4
+                                    },
+                            "params":{
+                                "mode_lte_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_sdr_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_wifi_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_lift_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                }
+                            }
+                        },
+                        "data5": {
+                            "wl_data_type": "selfdefine5",
+                            "link_number": 1,
+                            "recv_mode": "link_selfdefine",
+                            "send_mode": "link_selfdefine",
+                            "add_libwlm_header":false,
+                            "rm_libwlm_header":false,
+                            "check_libwlm_header":false,
+                            "link_selfdefine": {
+                                    "enable": true,
+                                    "output": 5,
+                                    "input": 5
+                                    },
+                            "params":{
+                                "mode_lte_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_sdr_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_wifi_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                },
+                                "mode_lift_only": {
+                                    "recv_source": "wlm_share",
+                                    "send_target": "wlm_share"
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+    }
+}

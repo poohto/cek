@@ -1,0 +1,23 @@
+{
+    "Image_Build_IDs": {
+        "adsp": "ADSP.HT.5.5-01012-LAHAINA-1", 
+        "aop": "AOP.HO.3.0-00411-LAHAINA_E-1", 
+        "apps": "LA.UM.9.14.3.r1-03500-QCM6490.0-1", 
+        "apps_qssi": "LA.QSSI.11.1.r1-01700-qssi.0-1", 
+        "boot": "BOOT.MXF.1.0-00965-LAHAINA-1", 
+        "btfw_mp": "BTFW.MOSELLE.1.1.0-00475-MSL_PATCHZ-1", 
+        "cdsp": "CDSP.HT.2.5-00915-LAHAINA-1", 
+        "common": "QCS5430.LA.1.0-00006-STD.PROD-1", 
+        "cpucp": "CPUCP.FW.1.0-00072-LAHAINA.EXT-1", 
+        "glue": "GLUE.QCM6490_LA.2.2-00006-NOOP_TEST-1", 
+        "tz": "TZ.XF.5.11-00621-ADJKODIAKAAAAANAZT-1", 
+        "tz_apps": "TZ.APPS.2.0-00249-SPF.LAHAINA-1", 
+        "wlan": "WLAN.MSL.1.0.1-01189-QCAMSLSWPLZ-1"
+    }, 
+    "Metabuild_Info": {
+        "Meta_Build_ID": "QCS5430.LA.1.0-00006-STD.PROD-1", 
+        "Product_Flavor": "asic", 
+        "Time_Stamp": "2023-12-15 20:40:37"
+    }, 
+    "Version": "1.0"
+}
